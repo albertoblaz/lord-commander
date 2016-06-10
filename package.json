@@ -1,0 +1,65 @@
+{
+  "name": "lord-commander",
+  "version": "0.1.0",
+  "description": "Proptotype of an online game built with JavaScript using React and Redux ",
+  "keywords": "Lord, Commander, React, Redux, ES2015, ES6, Webpack",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "clean": "rimraf dist",
+    "build:webpack": "NODE_ENV=production webpack --progress --colors --config webpack.config.prod.js",
+    "build": "npm run clean && npm run build:webpack"
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "stage-0",
+      "react"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/albertoblaz/lord-commander.git"
+  },
+  "author": "Alberto Blazquez <hola@albertoblazquez.net>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/albertoblaz/lord-commander/issues"
+  },
+  "homepage": "https://github.com/albertoblaz/lord-commander#readme",
+  "dependencies": {
+    "isomorphic-fetch": "^2.2.1",
+    "lodash": "^4.13.1",
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0",
+    "react-redux": "^4.4.5",
+    "react-router": "^2.4.1",
+    "redux": "^3.5.2",
+    "redux-logger": "^2.6.1",
+    "redux-saga": "^0.10.4",
+    "redux-thunk": "^2.1.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.9.0",
+    "babel-core": "^6.9.0",
+    "babel-loader": "^6.2.4",
+    "babel-polyfill": "^6.9.0",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-preset-react-hmre": "^1.1.1",
+    "babel-preset-stage-0": "^6.5.0",
+    "css-loader": "^0.23.1",
+    "eslint": "^2.10.2",
+    "eslint-config-standard": "^5.3.1",
+    "eslint-plugin-promise": "^1.3.0",
+    "eslint-plugin-react": "^5.1.1",
+    "eslint-plugin-standard": "^1.3.2",
+    "express": "^4.13.4",
+    "postcss-loader": "^0.9.1",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.1",
+    "webpack-dev-middleware": "^1.6.1",
+    "webpack-dev-server": "^1.14.1",
+    "webpack-hot-middleware": "^2.10.0"
+  }
+}
