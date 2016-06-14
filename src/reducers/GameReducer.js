@@ -50,7 +50,7 @@ const malusAfterConquest = (state, province) => ({
 })
 
 const handlers = {
-  [actions.START_GAME]: (state, action) =>
+  [actions.START_GAME]: (state) =>
     Object.assign({}, state, initialState),
 
   [actions.CONQUER_PROVINCE]: (state, action) =>
