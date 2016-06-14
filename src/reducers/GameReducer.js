@@ -2,7 +2,7 @@ import actions from '../actions/GameActionCreators'
 
 const initialState = {
   isMenuOpen: false,
-  activeProvinceId: '',
+  activeProvince: null,
 
   resources: {
     money: 500,
@@ -14,28 +14,28 @@ const initialState = {
   },
 
   provinces: {
-    'a': {
+    '00': {
       owner: 'albertoblaz',
-      id: 1,
-      name: 'a',
+      id: '00',
+      name: 'Antwerpen',
       resources: {
         money: 13,
         manpower: 40,
       },
     },
-    'b': {
+    '01': {
       owner: 'albertoblaz',
-      id: 2,
-      name: 'a',
+      id: '01',
+      name: 'Venice',
       resources: {
         money: 7,
         manpower: 70,
       },
     },
-    'c': {
+    '02': {
       owner: 'adriantom3',
-      id: 3,
-      name: 'a',
+      id: '02',
+      name: 'Paris',
       resources: {
         money: 3,
         manpower: 19,
@@ -66,13 +66,13 @@ const handlers = {
   [actions.SHOW_MENU_PROVINCE]: (state, action) =>
     Object.assign({}, state, {
       isMenuOpen: true,
-      activeProvinceId: action.provinceId,
+      activeProvince: action.province,
     }),
 
   [actions.HIDE_MENU]: (state) =>
     Object.assign({}, state, {
       isMenuOpen: false,
-      activeProvinceId: '',
+      activeProvince: null,
     }),
 }
 

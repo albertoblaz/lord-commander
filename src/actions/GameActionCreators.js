@@ -15,7 +15,7 @@ const registerAction = _.partial(unboundRegisterAction, actions)
 // asynchronous actions
 registerAction('START_GAME', [])
 
-registerAction('SHOW_MENU_PROVINCE', ['provinceId'])
+registerAction('SHOW_MENU_PROVINCE', ['province'])
 registerAction('HIDE_MENU', [])
 
 // registerAsyncAction(ChatApi, 'sendText')

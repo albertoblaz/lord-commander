@@ -5,6 +5,7 @@ import _ from 'lodash'
 import ResourcesBar from '../components/ResourcesBar'
 // import MapCanvas from '../components/MapCanvas'
 import MapTable from '../components/MapTable'
+import ContextualMenu from '../components/ContextualMenu'
 
 import actions from '../actions/GameActionCreators'
 
@@ -22,13 +23,23 @@ class Game extends Component {
     return (
       <div>
         <ResourcesBar {...this.props.resources}/>
+
         <MapTable
           provinces={this.props.provinces}
           onClickProvince={this._onClickProvince}
         />
+
+        {this._renderContextualMenu()}
+
         <span onClick={() => this._onCloseMenu()}>Close</span>
       </div>
     )
+  }
+
+  _renderContextualMenu () {
+    return this.props.isMenuOpen && this.props.activeProvince
+      ? <ContextualMenu activeProvince={this.props.activeProvince}/>
+      : null
   }
 
   _onCloseMenu () {
@@ -36,7 +47,8 @@ class Game extends Component {
   }
 
   _onClickProvince (provinceId) {
-    this.props.dispatch(actions.showMenuProvince({ provinceId }))
+    const province = this.props.provinces[provinceId]
+    province && this.props.dispatch(actions.showMenuProvince({ province }))
   }
 }
 
@@ -44,6 +56,13 @@ Game.propTypes = {
   dispatch: PropTypes.func.isRequired,
   resources: PropTypes.object.isRequired,
   provinces: PropTypes.object.isRequired,
+  isMenuOpen: PropTypes.bool.isRequired,
+  activeProvince: PropTypes.oneOfType([null, {
+    owner: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    resources: PropTypes.object.isRequired,
+  }]),
 }
 
 const sumResources = (playerResources, resources) => {
@@ -60,6 +79,8 @@ const calculateResources = (playerResources, provinces) =>
     .reduce(sumResources, playerResources)
 
 const mapStateToProps = (state) => ({
+  isMenuOpen: state.game.isMenuOpen,
+  activeProvince: state.game.activeProvince,
   provinces: state.game.provinces,
   resources: calculateResources(state.game.resources, state.game.provinces),
 })
