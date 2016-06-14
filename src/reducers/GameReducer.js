@@ -1,6 +1,9 @@
 import actions from '../actions/GameActionCreators'
 
 const initialState = {
+  isMenuOpen: false,
+  activeProvinceId: '',
+
   resources: {
     money: 500,
     manpower: 20000,
@@ -9,6 +12,7 @@ const initialState = {
     vylerium: 80,
     technology: 3,
   },
+
   provinces: {
     'a': {
       owner: 'albertoblaz',
@@ -57,6 +61,18 @@ const handlers = {
           resources: malusAfterConquest(state, action.province),
         },
       },
+    }),
+
+  [actions.SHOW_MENU_PROVINCE]: (state, action) =>
+    Object.assign({}, state, {
+      isMenuOpen: true,
+      activeProvinceId: action.provinceId,
+    }),
+
+  [actions.HIDE_MENU]: (state) =>
+    Object.assign({}, state, {
+      isMenuOpen: false,
+      activeProvinceId: '',
     }),
 }
 
