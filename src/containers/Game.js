@@ -3,11 +3,17 @@ import { connect } from 'react-redux'
 import _ from 'lodash'
 
 import ResourcesBar from '../components/ResourcesBar'
-import MapCanvas from '../components/MapCanvas'
+// import MapCanvas from '../components/MapCanvas'
+import MapTable from '../components/MapTable'
 
 import actions from '../actions/GameActionCreators'
 
 class Game extends Component {
+  constructor (props) {
+    super(props)
+    this._onClickProvince = this._onClickProvince.bind(this)
+  }
+
   componentWillMount () {
     this.props.dispatch(actions.startGame())
   }
@@ -16,9 +22,21 @@ class Game extends Component {
     return (
       <div>
         <ResourcesBar {...this.props.resources}/>
-        <MapCanvas provinces={this.props.provinces}/>
+        <MapTable
+          provinces={this.props.provinces}
+          onClickProvince={this._onClickProvince}
+        />
+        <span onClick={() => this._onCloseMenu()}>Close</span>
       </div>
     )
+  }
+
+  _onCloseMenu () {
+    this.props.dispatch(actions.hideMenu())
+  }
+
+  _onClickProvince (provinceId) {
+    this.props.dispatch(actions.showMenuProvince({ provinceId }))
   }
 }
 
