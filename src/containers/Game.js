@@ -7,7 +7,8 @@ import ResourcesBar from '../components/ResourcesBar'
 import MapTable from '../components/MapTable'
 import ContextualMenu from '../components/ContextualMenu'
 
-import actions from '../actions/GameActionCreators'
+import gameActions from '../actions/GameActionCreators'
+import provinceActions from '../actions/ProvinceActionCreators'
 
 class Game extends Component {
   constructor (props) {
@@ -16,7 +17,8 @@ class Game extends Component {
   }
 
   componentWillMount () {
-    this.props.dispatch(actions.startGame())
+    this.props.dispatch(gameActions.startGame())
+    this.props.dispatch(provinceActions.getProvinces())
   }
 
   render () {
@@ -43,12 +45,12 @@ class Game extends Component {
   }
 
   _onCloseMenu () {
-    this.props.dispatch(actions.hideMenu())
+    this.props.dispatch(provinceActions.hideMenu())
   }
 
   _onClickProvince (provinceId) {
     const province = this.props.provinces[provinceId]
-    province && this.props.dispatch(actions.showMenuProvince({ province }))
+    province && this.props.dispatch(provinceActions.showMenuProvince({ province }))
   }
 }
 
@@ -79,10 +81,10 @@ const calculateResources = (playerResources, provinces) =>
     .reduce(sumResources, playerResources)
 
 const mapStateToProps = (state) => ({
-  isMenuOpen: state.game.isMenuOpen,
-  activeProvince: state.game.activeProvince,
-  provinces: state.game.provinces,
-  resources: calculateResources(state.game.resources, state.game.provinces),
+  isMenuOpen: state.provinces.isMenuOpen,
+  activeProvince: state.provinces.activeProvince,
+  provinces: state.provinces.provinces,
+  resources: calculateResources(state.game.resources, state.provinces.provinces),
 })
 
 export default connect(mapStateToProps)(Game)
