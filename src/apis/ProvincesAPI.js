@@ -3,6 +3,14 @@ import fetch from 'isomorphic-fetch'
 
 import ProvincesNames from '../constants/ProvincesNames'
 
+const _randomTerrain = () => {
+  const n = Math.random()
+  return n > 0.75 ? 'plain'
+    : n > 0.50 ? 'valley'
+    : n > 0.25 ? 'mountain'
+    : 'dessert'
+}
+
 function _getProvincesLocally () {
   const provinces = {}
   _.range(5).map((i) =>
@@ -10,12 +18,14 @@ function _getProvincesLocally () {
       const id = `${i}${j}`
       provinces[id] = {
         id,
-        owner: Math.random() > 0.5 ? 'albertoblaz' : 'adriantom3',
+        owner: i < 3 || j < 1 ? 'albertoblaz' : 'adriantom3',
         name: ProvincesNames[id],
         resources: {
           money: Math.random() * 25,
           manpower: Math.random() * 25,
         },
+        terrain: _randomTerrain(),
+        underSiege: false,
       }
       return id
     })
