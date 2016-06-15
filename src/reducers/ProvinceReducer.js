@@ -3,8 +3,6 @@ import actions from '../actions/ProvinceActionCreators'
 const initialState = {
   componentState: 'loading',
   provinces: {},
-  isMenuOpen: false,
-  activeProvince: null,
 }
 
 // const malusTerrain = (terrain) => {
@@ -63,19 +61,6 @@ const handlers = {
     Object.assign({}, state, {
       componentState: 'failed',
       provinces: {},
-    }),
-
-  // ===
-  [actions.SHOW_MENU_PROVINCE]: (state, action) =>
-    Object.assign({}, state, {
-      isMenuOpen: true,
-      activeProvince: action.province,
-    }),
-
-  [actions.HIDE_MENU]: (state) =>
-    Object.assign({}, state, {
-      isMenuOpen: false,
-      activeProvince: null,
     }),
 }
 

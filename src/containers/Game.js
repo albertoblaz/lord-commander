@@ -47,12 +47,12 @@ class Game extends Component {
   }
 
   _onCloseMenu () {
-    this.props.dispatch(provinceActions.hideMenu())
+    this.props.dispatch(cMenuActions.hideMenu())
   }
 
   _onClickProvince (provinceId) {
     const province = this.props.provinces[provinceId]
-    province && this.props.dispatch(provinceActions.showMenuProvince({ province }))
+    province && this.props.dispatch(cMenuActions.showMenuProvince({ province }))
   }
 }
 
@@ -85,11 +85,12 @@ const calculateResources = (playerResources, provinces) =>
     .map((province) => province.resources)
     .reduce(sumResources, playerResources)
 
-const mapStateToProps = ({ game, provinces, army }) =>
+const mapStateToProps = (state) =>
   Object.assign({},
-    provinces,
-    { armies: army.armies },
-    { resources: calculateResources(game.resources, provinces.provinces) }
+    state.cmenu,
+    state.provinces,
+    { armies: state.army.armies },
+    { resources: calculateResources(state.game.resources, state.provinces.provinces) }
   )
 
 export default connect(mapStateToProps)(Game)
