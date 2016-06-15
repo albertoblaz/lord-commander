@@ -14,9 +14,7 @@ class Game extends Component {
   constructor (props) {
     super(props)
     this._onClickProvince = this._onClickProvince.bind(this)
-  }
 
-  componentWillMount () {
     this.props.dispatch(gameActions.startGame())
     this.props.dispatch(provinceActions.getProvinces())
   }
@@ -70,7 +68,7 @@ Game.propTypes = {
 const sumResources = (playerResources, resources) => {
   const keys = Object.keys(playerResources)
   const values = _.map(keys, (k) =>
-    _.isNumber(resources[k]) ? playerResources[k] + resources[k] : playerResources[k])
+    _.isNumber(resources[k]) ? resources[k] + playerResources[k] : playerResources[k])
   return _.zipObject(keys, values)
 }
 
@@ -80,12 +78,10 @@ const calculateResources = (playerResources, provinces) =>
     .map((province) => province.resources)
     .reduce(sumResources, playerResources)
 
-const mapStateToProps = (state) => ({
-  isMenuOpen: state.provinces.isMenuOpen,
-  activeProvince: state.provinces.activeProvince,
-  provinces: state.provinces.provinces,
-  resources: calculateResources(state.game.resources, state.provinces.provinces),
-})
+const mapStateToProps = ({ game, provinces }) =>
+  Object.assign({}, provinces, {
+    resources: calculateResources(game.resources, provinces.provinces),
+  })
 
 export default connect(mapStateToProps)(Game)
 
