@@ -17,17 +17,19 @@ const MapTable = React.createClass({
   },
 
   _renderProvince (id) {
-    const { name, owner } = this.props.provinces[id]
+    const { name, owner, terrain } = this.props.provinces[id]
     const style = owner === 'albertoblaz'
       ? { backgroundColor: 'blue' }
-      : { backgroundColor: 'red' }
+      : { backgroundColor: 'magenta' }
     return (
       <td
         key={id}
         onClick={this._onClickProvince.bind(this, id)}
         style={style}
       >
-        {name}
+        <strong>{name}</strong>
+        <br></br>
+        <span>{terrain}</span>
       </td>
     )
   },

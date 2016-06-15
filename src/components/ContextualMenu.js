@@ -7,6 +7,8 @@ const ContextualMenu = ({ activeProvince }) =>
       <strong>{activeProvince.name}</strong>
       <br></br>
       <span>{activeProvince.owner}</span>
+      <br></br>
+      <span>Terrain: {activeProvince.terrain}</span>
       <ul>
         {_renderResources(activeProvince.resources)}
       </ul>

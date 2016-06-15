@@ -64,6 +64,7 @@ Game.propTypes = {
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     resources: PropTypes.object.isRequired,
+    terrain: PropTypes.string.isRequired,
   }),
 }
 
