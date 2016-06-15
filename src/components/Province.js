@@ -7,15 +7,21 @@ const Province = (props) => {
       : { backgroundColor: 'magenta' }
   return (
     <td
-      onClick={props.onClick.bind(this, id)}
       style={style}
     >
-      <strong>{name}</strong>
-      <br></br>
-      <span>{terrain}</span>
-      <br></br>
-      <br></br>
-      {army}
+      <div
+        onClick={props.onClick.bind(this, id)}
+      >
+        <strong>{name}</strong>
+        <br></br>
+        <span>{terrain}</span>
+      </div>
+
+      <div>
+        <br></br>
+        <br></br>
+        {army}
+      </div>
     </td>
   )
 }

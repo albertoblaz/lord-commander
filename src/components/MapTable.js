@@ -12,13 +12,16 @@ const MapTable = React.createClass({
     ]).isRequired,
     provinces: PropTypes.object.isRequired,
     onClickProvince: PropTypes.func.isRequired,
+    onClickArmy: PropTypes.func.isRequired,
   },
 
   _findArmy (provinceId) {
     const army = _(this.props.armies)
       .values()
       .find((a) => a.provinceId === provinceId)
-    return army ? <Army {...army}/> : null
+    return army
+      ? <Army {...army} onClick={this.props.onClickArmy}/>
+      : null
   },
 
   _renderProvince (id) {

@@ -16,6 +16,7 @@ class Game extends Component {
   constructor (props) {
     super(props)
     this._onClickProvince = this._onClickProvince.bind(this)
+    this._onClickArmy = this._onClickArmy.bind(this)
 
     this.props.dispatch(gameActions.startGame())
     this.props.dispatch(provinceActions.getProvinces())
@@ -31,19 +32,18 @@ class Game extends Component {
           provinces={this.props.provinces}
           armies={this.props.armies}
           onClickProvince={this._onClickProvince}
+          onClickArmy={this._onClickArmy}
         />
 
-        {this._renderContextualMenu()}
+        <ContextualMenu
+          isMenuOpen={this.props.isMenuOpen}
+          activeProvince={this.props.activeProvince}
+          activeArmy={this.props.activeArmy}
+        />
 
         <span onClick={() => this._onCloseMenu()}>Close</span>
       </div>
     )
-  }
-
-  _renderContextualMenu () {
-    return this.props.isMenuOpen && this.props.activeProvince
-      ? <ContextualMenu activeProvince={this.props.activeProvince}/>
-      : null
   }
 
   _onCloseMenu () {
@@ -53,6 +53,11 @@ class Game extends Component {
   _onClickProvince (provinceId) {
     const province = this.props.provinces[provinceId]
     province && this.props.dispatch(cMenuActions.showMenuProvince({ province }))
+  }
+
+  _onClickArmy (armyId) {
+    const army = this.props.armies[armyId]
+    army && this.props.dispatch(cMenuActions.showMenuArmy({ army }))
   }
 }
 
