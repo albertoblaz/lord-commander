@@ -5,7 +5,7 @@ import { switchOnState } from '../utils/RenderUtils'
 
 const MapTable = React.createClass({
   propTypes: {
-    componentState: PropTypes.oneOfType([
+    componentState: PropTypes.oneOf([
       'loading', 'idle', 'failed',
     ]).isRequired,
     provinces: PropTypes.object.isRequired,

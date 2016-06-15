@@ -59,12 +59,12 @@ Game.propTypes = {
   resources: PropTypes.object.isRequired,
   provinces: PropTypes.object.isRequired,
   isMenuOpen: PropTypes.bool.isRequired,
-  activeProvince: PropTypes.oneOfType([null, {
+  activeProvince: PropTypes.shape({
     owner: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     resources: PropTypes.object.isRequired,
-  }]),
+  }),
 }
 
 const sumResources = (playerResources, resources) => {
