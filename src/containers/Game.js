@@ -58,17 +58,27 @@ class Game extends Component {
 
 Game.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  componentState: PropTypes.string.isRequired,
+
   resources: PropTypes.object.isRequired,
+
+  componentState: PropTypes.string.isRequired,
   provinces: PropTypes.object.isRequired,
-  isMenuOpen: PropTypes.bool.isRequired,
+
   armies: PropTypes.object.isRequired,
+
+  isMenuOpen: PropTypes.bool.isRequired,
   activeProvince: PropTypes.shape({
     owner: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     resources: PropTypes.object.isRequired,
     terrain: PropTypes.string.isRequired,
+  }),
+  activeArmy: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    owner: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    provinceId: PropTypes.string.isRequired,
   }),
 }
 
