@@ -2,6 +2,8 @@ import React, { PropTypes } from 'react'
 import _ from 'lodash'
 
 import { switchOnState } from '../utils/RenderUtils'
+import Province from './Province'
+import Army from './Army'
 
 const MapTable = React.createClass({
   propTypes: {
@@ -12,25 +14,23 @@ const MapTable = React.createClass({
     onClickProvince: PropTypes.func.isRequired,
   },
 
-  _onClickProvince (id) {
-    this.props.onClickProvince(id)
+  _findArmy (provinceId) {
+    const army = _(this.props.armies)
+      .values()
+      .find((a) => a.provinceId === provinceId)
+    return army ? <Army {...army}/> : null
   },
 
   _renderProvince (id) {
-    const { name, owner, terrain } = this.props.provinces[id]
-    const style = owner === 'albertoblaz'
-      ? { backgroundColor: 'blue' }
-      : { backgroundColor: 'magenta' }
+    const provinceProps = this.props.provinces[id]
+    const army = this._findArmy(id)
     return (
-      <td
+      <Province
+        {...provinceProps}
         key={id}
-        onClick={this._onClickProvince.bind(this, id)}
-        style={style}
-      >
-        <strong>{name}</strong>
-        <br></br>
-        <span>{terrain}</span>
-      </td>
+        army={army}
+        onClick={this.props.onClickProvince}
+      />
     )
   },
 
