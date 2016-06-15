@@ -1,21 +1,36 @@
-import React, { PropTypes, Component } from 'react'
+import React, { PropTypes } from 'react'
 import _ from 'lodash'
 
-class MapTable extends Component {
+import { switchOnState } from '../utils/RenderUtils'
+
+const MapTable = React.createClass({
+  propTypes: {
+    componentState: PropTypes.oneOfType([
+      'loading', 'idle', 'failed',
+    ]).isRequired,
+    provinces: PropTypes.object.isRequired,
+    onClickProvince: PropTypes.func.isRequired,
+  },
+
   _onClickProvince (id) {
     this.props.onClickProvince(id)
-  }
+  },
 
   _renderProvince (id) {
+    const { name, owner } = this.props.provinces[id]
+    const style = owner === 'albertoblaz'
+      ? { backgroundColor: 'blue' }
+      : { backgroundColor: 'red' }
     return (
       <td
         key={id}
         onClick={this._onClickProvince.bind(this, id)}
+        style={style}
       >
-        {id}
+        {name}
       </td>
     )
-  }
+  },
 
   _renderRows (i) {
     return (
@@ -23,9 +38,13 @@ class MapTable extends Component {
         {_.range(5).map((j) => this._renderProvince(`${i}${j}`))}
       </tr>
     )
-  }
+  },
 
-  render () {
+  _renderLoading () {
+    return <span>Loading...</span>
+  },
+
+  _renderIdle () {
     return (
       <table width={500} height={500}>
         <tbody>
@@ -33,12 +52,17 @@ class MapTable extends Component {
         </tbody>
       </table>
     )
-  }
-}
+  },
 
-MapTable.propTypes = {
-  provinces: PropTypes.object.isRequired,
-  onClickProvince: PropTypes.func.isRequired,
-}
+  _renderFailed () {
+    return <span>Failed!</span>
+  },
+
+  render: switchOnState('componentState', {
+    loading: '_renderLoading',
+    idle: '_renderIdle',
+    failed: '_renderFailed',
+  }),
+})
 
 export default MapTable

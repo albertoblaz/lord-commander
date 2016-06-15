@@ -25,6 +25,7 @@ class Game extends Component {
         <ResourcesBar {...this.props.resources}/>
 
         <MapTable
+          componentState={this.props.componentState}
           provinces={this.props.provinces}
           onClickProvince={this._onClickProvince}
         />
@@ -54,6 +55,7 @@ class Game extends Component {
 
 Game.propTypes = {
   dispatch: PropTypes.func.isRequired,
+  componentState: PropTypes.string.isRequired,
   resources: PropTypes.object.isRequired,
   provinces: PropTypes.object.isRequired,
   isMenuOpen: PropTypes.bool.isRequired,
