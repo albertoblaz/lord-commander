@@ -9,6 +9,7 @@ import ContextualMenu from '../components/ContextualMenu'
 
 import gameActions from '../actions/GameActionCreators'
 import provinceActions from '../actions/ProvinceActionCreators'
+import armyActions from '../actions/ArmyActionCreators'
 
 class Game extends Component {
   constructor (props) {
@@ -17,6 +18,7 @@ class Game extends Component {
 
     this.props.dispatch(gameActions.startGame())
     this.props.dispatch(provinceActions.getProvinces())
+    this.props.dispatch(armyActions.deployArmies())
   }
 
   render () {
@@ -27,6 +29,7 @@ class Game extends Component {
         <MapTable
           componentState={this.props.componentState}
           provinces={this.props.provinces}
+          armies={this.props.armies}
           onClickProvince={this._onClickProvince}
         />
 
@@ -59,6 +62,7 @@ Game.propTypes = {
   resources: PropTypes.object.isRequired,
   provinces: PropTypes.object.isRequired,
   isMenuOpen: PropTypes.bool.isRequired,
+  armies: PropTypes.object.isRequired,
   activeProvince: PropTypes.shape({
     owner: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
@@ -81,10 +85,12 @@ const calculateResources = (playerResources, provinces) =>
     .map((province) => province.resources)
     .reduce(sumResources, playerResources)
 
-const mapStateToProps = ({ game, provinces }) =>
-  Object.assign({}, provinces, {
-    resources: calculateResources(game.resources, provinces.provinces),
-  })
+const mapStateToProps = ({ game, provinces, army }) =>
+  Object.assign({},
+    provinces,
+    { armies: army.armies },
+    { resources: calculateResources(game.resources, provinces.provinces) }
+  )
 
 export default connect(mapStateToProps)(Game)
 
