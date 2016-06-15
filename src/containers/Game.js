@@ -9,7 +9,8 @@ import ContextualMenu from '../components/ContextualMenu'
 
 import gameActions from '../actions/GameActionCreators'
 import provinceActions from '../actions/ProvinceActionCreators'
-import armyActions from '../actions/ArmyActionCreators'
+// import armyActions from '../actions/ArmyActionCreators'
+import cMenuActions from '../actions/CMenuActionCreators'
 
 class Game extends Component {
   constructor (props) {
@@ -18,7 +19,6 @@ class Game extends Component {
 
     this.props.dispatch(gameActions.startGame())
     this.props.dispatch(provinceActions.getProvinces())
-    this.props.dispatch(armyActions.deployArmies())
   }
 
   render () {
