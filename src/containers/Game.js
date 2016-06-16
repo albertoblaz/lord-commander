@@ -97,7 +97,7 @@ Game.propTypes = {
 const sumResources = (playerResources, resources) => {
   const keys = Object.keys(playerResources)
   const values = _.map(keys, (k) =>
-    _.isNumber(resources[k]) ? resources[k] + playerResources[k] : playerResources[k])
+    _.isNumber(resources[k]) ? parseInt(resources[k] + playerResources[k]) : parseInt(playerResources[k]))
   return _.zipObject(keys, values)
 }
 
