@@ -1,12 +1,17 @@
 import React from 'react'
-import { Link } from 'react-router'
+
+import game from '../../assets/icons/joystick.svg'
+import stats from '../../assets/icons/graph.svg'
+import settings from '../../assets/icons/settings.svg'
+
+import NavButton from '../components/NavButton'
 
 const Navigation = () =>
-  <nav>
+  <nav className={'navigation'}>
     <ul>
-      <li><Link to="/">Game</Link></li>
-      <li><Link to="/stats">Stats</Link></li>
-      <li><Link to="/settings">Settings</Link></li>
+      <li><NavButton name="Game" icon={game} link="/"/></li>
+      <li><NavButton name="Stats" icon={stats} link="/stats" /></li>
+      <li><NavButton name="Settings" icon={settings} link="/settings"/></li>
     </ul>
   </nav>
 

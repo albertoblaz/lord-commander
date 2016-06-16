@@ -1,18 +1,27 @@
 import React, { PropTypes } from 'react'
-// import _ from 'lodash'
+
+import coins from '../../assets/icons/coins.svg'
+import manpower from '../../assets/icons/soldier.svg'
+import siridium from '../../assets/icons/diamond.svg'
+import meganium from '../../assets/icons/diamond-1.svg'
+import vylerium from '../../assets/icons/diamond-2.svg'
+import tech from '../../assets/icons/science.svg'
+
+import Resource from './Resource'
+
+// 'svg-inline!icon.svg'
 
 const ResourcesBar = (props) =>
-  <header>
+  <header className={'resources'}>
     <ul>
-      <li>Money: {props.money}</li>
+      <Resource icon={coins} value={props.money}/>
+      <Resource icon={manpower} value={props.manpower}/>
 
-      <li>Man Power: {props.manpower}</li>
+      <Resource icon={siridium} value={props.siridium}/>
+      <Resource icon={meganium} value={props.meganium}/>
+      <Resource icon={vylerium} value={props.vylerium}/>
 
-      <li>Siridium: {props.siridium}</li>
-      <li>Meganium: {props.meganium}</li>
-      <li>Vylerium: {props.vylerium}</li>
-
-      <li>Technology: {props.technology}</li>
+      <Resource icon={tech} value={props.technology}/>
     </ul>
   </header>
 

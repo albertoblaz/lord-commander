@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 
 const CMenuProvince = ({ isMenuOpen, activeProvince }) =>
   !isMenuOpen ? null : (
-    <div>
+    <aside className={'cmenu'}>
       <header>
         <strong>{activeProvince.name}</strong>
         <br></br>
@@ -15,7 +15,7 @@ const CMenuProvince = ({ isMenuOpen, activeProvince }) =>
           {_renderResources(activeProvince.resources)}
         </ul>
       </div>
-    </div>
+    </aside>
   )
 
 const _renderResources = (resources) =>
