@@ -51,7 +51,7 @@ const MapTable = React.createClass({
 
   _renderIdle () {
     return (
-      <table width={500} height={500}>
+      <table className={'canvas'}>
         <tbody>
           {_.range(5).map((i) => this._renderRows(i))}
         </tbody>

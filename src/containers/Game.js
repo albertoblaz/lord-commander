@@ -26,7 +26,7 @@ class Game extends Component {
 
   render () {
     return (
-      <div>
+      <div className={'content'}>
         <ResourcesBar {...this.props.resources}/>
 
         <MapTable

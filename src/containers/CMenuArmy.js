@@ -2,11 +2,11 @@ import React, { PropTypes } from 'react'
 
 const CMenuArmy = ({ isMenuOpen, activeArmy }) =>
   !isMenuOpen ? null : (
-    <div>
+    <aside className={'cmenu'}>
       <strong>{activeArmy.name}</strong>
       <br></br>
       <span>{activeArmy.owner}</span>
-    </div>
+    </aside>
   )
 
 CMenuArmy.propTypes = {
