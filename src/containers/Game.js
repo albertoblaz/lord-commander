@@ -5,7 +5,9 @@ import _ from 'lodash'
 import ResourcesBar from '../components/ResourcesBar'
 // import MapCanvas from '../components/MapCanvas'
 import MapTable from '../components/MapTable'
-import ContextualMenu from '../components/ContextualMenu'
+
+import CMenuProvince from './CMenuProvince'
+import CMenuArmy from './CMenuArmy'
 
 import gameActions from '../actions/GameActionCreators'
 import provinceActions from '../actions/ProvinceActionCreators'
@@ -35,9 +37,13 @@ class Game extends Component {
           onClickArmy={this._onClickArmy}
         />
 
-        <ContextualMenu
-          isMenuOpen={this.props.isMenuOpen}
+        <CMenuProvince
+          isMenuOpen={this.props.isMenuProvinceOpen}
           activeProvince={this.props.activeProvince}
+        />
+
+        <CMenuArmy
+          isMenuOpen={this.props.isMenuArmyOpen}
           activeArmy={this.props.activeArmy}
         />
 
@@ -71,7 +77,8 @@ Game.propTypes = {
 
   armies: PropTypes.object.isRequired,
 
-  isMenuOpen: PropTypes.bool.isRequired,
+  isMenuProvinceOpen: PropTypes.bool.isRequired,
+  isMenuArmyOpen: PropTypes.bool.isRequired,
   activeProvince: PropTypes.shape({
     owner: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,

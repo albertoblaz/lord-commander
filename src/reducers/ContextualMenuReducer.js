@@ -2,7 +2,8 @@ import gameActions from '../actions/GameActionCreators'
 import actions from '../actions/CMenuActionCreators'
 
 const initialState = {
-  isMenuOpen: false,
+  isMenuProvinceOpen: false,
+  isMenuArmyOpen: false,
   activeProvince: null,
   activeArmy: null,
 }
@@ -13,14 +14,16 @@ const handlers = {
 
   [actions.SHOW_MENU_PROVINCE]: (state, action) =>
     Object.assign({}, state, {
-      isMenuOpen: true,
+      isMenuProvinceOpen: true,
+      isMenuArmyOpen: false,
       activeProvince: action.province,
       activeArmy: null,
     }),
 
   [actions.SHOW_MENU_ARMY]: (state, action) =>
     Object.assign({}, state, {
-      isMenuOpen: true,
+      isMenuProvinceOpen: false,
+      isMenuArmyOpen: true,
       activeProvince: null,
       activeArmy: action.army,
     }),
