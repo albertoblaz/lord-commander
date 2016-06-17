@@ -8,8 +8,8 @@ const Resource = ({ icon, value }) =>
   </li>
 
 Resource.propTypes = {
-  icon: PropTypes.object.isRequired,
-  value: PropTypes.string.isRequired,
+  icon: PropTypes.string.isRequired,
+  value: PropTypes.number.isRequired,
 }
 
 export default Resource
