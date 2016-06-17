@@ -4,13 +4,13 @@ html {
 	font-family: sans-serif;
 }
 
-.navigation {
+.sidebar {
 	position: absolute;
 	top: 0;
 	bottom: 0;
 	left: 0;
 	width: 70px;
-	background-color: #1A1A1A;
+	background-color: #1D1D1D;
 
 	ul {
 		margin: 0;
@@ -20,7 +20,7 @@ html {
 	li {
     display: block;
     height: 60px;
-    padding: .75em 0;
+    padding: 1em 0;
     color: white;
 		list-style: none;
     text-align: center;
@@ -41,9 +41,8 @@ html {
 		width: 35px;
 	}
 
-	span {
-    position: relative;
-		top: -10px;
+	p {
+		margin-top: 10px;
 		font-size: 14px;
 	}
 
@@ -66,7 +65,7 @@ html {
 	left: 0;
 	right: 0;
 	height: 45px;
-	background-color: #222;
+	background-color: #1D1D1D;
 	color: white;
 
 	ul {
@@ -92,6 +91,26 @@ html {
     top: -4px;
     left: 7px;
 	}
+}
+
+.sidebar-menu {
+	display: none;
+	position: absolute;
+  top: 50px;
+  left: 80px;
+	height: 450px;
+	width: 300px;
+  padding: 1em;
+
+  background: #333;
+  color: white;
+  z-index: 200;
+	transition: .5s all;
+
+  &.active {
+  	display: block;
+  	transition: .5s all;
+  }
 }
 
 .cmenu {
