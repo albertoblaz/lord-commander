@@ -1,5 +1,7 @@
 import React, { PropTypes } from 'react'
 
+import { Toolbar, ToolbarGroup } from 'material-ui/Toolbar'
+
 import coins from '../../assets/icons/coins.svg'
 import manpower from '../../assets/icons/soldier.svg'
 import siridium from '../../assets/icons/diamond.svg'
@@ -12,18 +14,18 @@ import Resource from './Resource'
 // 'svg-inline!icon.svg'
 
 const ResourcesBar = (props) =>
-  <header className={'resources'}>
-    <ul>
-      <Resource icon={coins} value={props.money}/>
-      <Resource icon={manpower} value={props.manpower}/>
-
-      <Resource icon={siridium} value={props.siridium}/>
-      <Resource icon={meganium} value={props.meganium}/>
-      <Resource icon={vylerium} value={props.vylerium}/>
-
-      <Resource icon={tech} value={props.technology}/>
-    </ul>
-  </header>
+  <Toolbar className="resources">
+    <ToolbarGroup>
+      <Resource tooltip="Gold" icon={coins} value={props.money}/>
+      <Resource tooltip="Manpower" icon={manpower} value={props.manpower}/>
+      <div className="divider"></div>
+      <Resource tooltip="Siridium" icon={siridium} value={props.siridium}/>
+      <Resource tooltip="Meganium" icon={meganium} value={props.meganium}/>
+      <Resource tooltip="Vylerium" icon={vylerium} value={props.vylerium}/>
+      <div className="divider"></div>
+      <Resource tooltip="Technology" icon={tech} value={props.technology}/>
+    </ToolbarGroup>
+  </Toolbar>
 
 ResourcesBar.propTypes = {
   money: PropTypes.number.isRequired,
