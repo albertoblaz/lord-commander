@@ -1,12 +1,14 @@
 import React, { PropTypes } from 'react'
 // import _ from 'lodash'
 
-import Navigation from './Navigation'
+import Sidebar from './Sidebar'
+import SidebarMenu from './SidebarMenu'
 import Chat from './Chat'
 
 const App = (props) =>
   <div>
-    <Navigation />
+    <Sidebar />
+    <SidebarMenu />
     {props.children}
     {/*<Chat />*/}
   </div>
