@@ -10,6 +10,7 @@ import vylerium from '../../assets/icons/diamond-2.svg'
 import tech from '../../assets/icons/science.svg'
 
 import Resource from './Resource'
+import NavigationList from './NavigationList'
 
 // 'svg-inline!icon.svg'
 
@@ -25,6 +26,8 @@ const ResourcesBar = (props) =>
       <div className="divider"></div>
       <Resource tooltip="Technology" icon={tech} value={props.technology}/>
     </ToolbarGroup>
+
+    <NavigationList username={props.username}/>
   </Toolbar>
 
 ResourcesBar.propTypes = {
@@ -34,6 +37,7 @@ ResourcesBar.propTypes = {
   meganium: PropTypes.number.isRequired,
   vylerium: PropTypes.number.isRequired,
   technology: PropTypes.number.isRequired,
+  username: PropTypes.string.isRequired,
 }
 
 export default ResourcesBar

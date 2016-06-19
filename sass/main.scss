@@ -76,6 +76,25 @@ body {
 	}
 }
 
+.navigation {
+	.user-button {
+		height: 60px !important;
+		width: 180px !important;
+		line-height: 50px !important;
+		padding-left: 10px !important;
+	}
+
+	.user-avatar {
+		position: relative;
+    top: 8px;
+    right: 5px;
+	}
+}
+
+.nav-link {
+	text-decoration: none;
+}
+
 .sidebar-menu {
 	display: none;
 	position: absolute;
