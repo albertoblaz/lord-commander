@@ -3,16 +3,11 @@ import { connect } from 'react-redux'
 import _ from 'lodash'
 
 import ResourcesBar from '../components/ResourcesBar'
-// import MapCanvas from '../components/MapCanvas'
 import MapTable from '../components/MapTable'
-
-import CMenuProvince from './CMenuProvince'
-import CMenuArmy from './CMenuArmy'
 
 import gameActions from '../actions/GameActionCreators'
 import provinceActions from '../actions/ProvinceActionCreators'
-// import armyActions from '../actions/ArmyActionCreators'
-import cMenuActions from '../actions/CMenuActionCreators'
+import sidebarActions from '../actions/SidebarActionCreators'
 
 class Game extends Component {
   constructor (props) {
@@ -36,34 +31,18 @@ class Game extends Component {
           onClickProvince={this._onClickProvince}
           onClickArmy={this._onClickArmy}
         />
-
-        <CMenuProvince
-          isMenuOpen={this.props.isMenuProvinceOpen}
-          activeProvince={this.props.activeProvince}
-        />
-
-        <CMenuArmy
-          isMenuOpen={this.props.isMenuArmyOpen}
-          activeArmy={this.props.activeArmy}
-        />
-
-        <span onClick={() => this._onCloseMenu()}>Close</span>
       </div>
     )
   }
 
-  _onCloseMenu () {
-    this.props.dispatch(cMenuActions.hideMenu())
-  }
-
   _onClickProvince (provinceId) {
     const province = this.props.provinces[provinceId]
-    province && this.props.dispatch(cMenuActions.showMenuProvince({ province }))
+    province && this.props.dispatch(sidebarActions.showMenuProvince({ province }))
   }
 
   _onClickArmy (armyId) {
     const army = this.props.armies[armyId]
-    army && this.props.dispatch(cMenuActions.showMenuArmy({ army }))
+    army && this.props.dispatch(sidebarActions.showMenuArmy({ army }))
   }
 }
 
@@ -76,22 +55,6 @@ Game.propTypes = {
   provinces: PropTypes.object.isRequired,
 
   armies: PropTypes.object.isRequired,
-
-  isMenuProvinceOpen: PropTypes.bool.isRequired,
-  isMenuArmyOpen: PropTypes.bool.isRequired,
-  activeProvince: PropTypes.shape({
-    owner: PropTypes.string.isRequired,
-    id: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    resources: PropTypes.object.isRequired,
-    terrain: PropTypes.string.isRequired,
-  }),
-  activeArmy: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    owner: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    provinceId: PropTypes.string.isRequired,
-  }),
 }
 
 const sumResources = (playerResources, resources) => {
@@ -109,7 +72,6 @@ const calculateResources = (playerResources, provinces) =>
 
 const mapStateToProps = (state) =>
   Object.assign({},
-    state.cmenu,
     state.provinces,
     { armies: state.army.armies },
     { resources: calculateResources(state.game.resources, state.provinces.provinces) }
