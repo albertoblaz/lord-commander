@@ -10,7 +10,7 @@ const renderMenu = (activeProvince, onClick) =>
     <header>
       <strong>{activeProvince.name}</strong>
       <br></br>
-      <span>{activeProvince.owner}</span>
+      <span>{activeProvince.owner || '<uncolonized>'}</span>
     </header>
 
     <div>
@@ -30,7 +30,7 @@ const renderResources = (resources) =>
 SidebarMenuProvince.propTypes = {
   isMenuOpen: PropTypes.bool.isRequired,
   activeProvince: PropTypes.shape({
-    owner: PropTypes.string.isRequired,
+    owner: PropTypes.string,
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     resources: PropTypes.object.isRequired,

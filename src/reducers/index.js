@@ -2,8 +2,9 @@ import { combineReducers } from 'redux'
 
 import army from './ArmyReducer'
 import chat from './ChatReducer'
-import game from './GameReducer'
+import map from './MapReducer'
 import provinces from './ProvinceReducer'
+import session from './SessionReducer'
 import sidebar from './SidebarReducer'
 
 const reducer = (handlers, state, action) =>
@@ -13,8 +14,9 @@ export default function createRootReducer (additionalReducers = {}) {
   const reducers = {
     army: army(reducer),
     chat: chat(reducer),
-    game: game(reducer),
+    map: map(reducer),
     provinces: provinces(reducer),
+    session: session(reducer),
     sidebar: sidebar(reducer),
   }
 

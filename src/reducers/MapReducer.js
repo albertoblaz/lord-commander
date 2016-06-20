@@ -1,4 +1,4 @@
-import actions from '../actions/GameActionCreators'
+import actions from '../actions/MapActionCreators'
 
 const initialState = {
   resources: {
