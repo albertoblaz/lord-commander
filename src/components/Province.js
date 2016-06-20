@@ -1,10 +1,18 @@
 import React, { PropTypes } from 'react'
 
+const colors = {
+  'NPC': 'black',
+  'albertoblaz': 'blue',
+  'messi': 'magenta',
+  'cristiano': 'yellow',
+  'zidane': 'green',
+  'iniesta': 'brown',
+  'ibrahimovic': 'orange',
+}
+
 const Province = (props) => {
   const { id, name, owner, terrain, army } = props
-  const style = owner === 'albertoblaz'
-      ? { backgroundColor: 'blue' }
-      : { backgroundColor: 'magenta' }
+  const style = { backgroundColor: colors[owner] }
   return (
     <td
       style={style}
