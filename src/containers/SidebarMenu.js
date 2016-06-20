@@ -2,6 +2,8 @@ import React, { PropTypes, Component } from 'react'
 import { connect } from 'react-redux'
 
 import SidebarMenuPanel from '../components/SidebarMenuPanel'
+import SidebarMenuProvince from '../components/SidebarMenuProvince'
+import SidebarMenuArmy from '../components/SidebarMenuArmy'
 import actions from '../actions/SidebarActionCreators'
 
 class SidebarMenu extends Component {
@@ -24,6 +26,18 @@ class SidebarMenu extends Component {
         <SidebarMenuPanel name="Production" isMenuOpen={props.isMenuProductionOpen} onClick={this._onCloseMenu}/>
         <SidebarMenuPanel name="Trade" isMenuOpen={props.isMenuTradeOpen} onClick={this._onCloseMenu}/>
         <SidebarMenuPanel name="Tech" isMenuOpen={props.isMenuTechOpen} onClick={this._onCloseMenu}/>
+
+        <SidebarMenuProvince
+          isMenuOpen={props.isMenuProvinceOpen}
+          activeProvince={props.activeProvince}
+          onClick={this._onCloseMenu}
+        />
+
+        <SidebarMenuArmy
+          isMenuOpen={props.isMenuArmyOpen}
+          activeArmy={props.activeArmy}
+          onClick={this._onCloseMenu}
+        />
       </section>
     )
   }
@@ -37,6 +51,10 @@ SidebarMenu.propTypes = {
   isMenuProductionOpen: PropTypes.bool.isRequired,
   isMenuTradeOpen: PropTypes.bool.isRequired,
   isMenuTechOpen: PropTypes.bool.isRequired,
+  isMenuProvinceOpen: PropTypes.bool.isRequired,
+  isMenuArmyOpen: PropTypes.bool.isRequired,
+  activeProvince: PropTypes.object,
+  activeArmy: PropTypes.object,
 }
 
 const mapStateToProps = (state, router) =>

@@ -20,17 +20,15 @@ class Sidebar extends Component {
 
   render () {
     return (
-      <nav className={'sidebar'}>
-        <ul>
-          <li><SidebarButton name="Faction" icon={game} onClick={this._onClickButton}/></li>
-          <li><SidebarButton name="Diplomacy" icon={stats} onClick={this._onClickButton}/></li>
-          <li><SidebarButton name="Economy" icon={settings} onClick={this._onClickButton}/></li>
-          <li><SidebarButton name="Production" icon={game} onClick={this._onClickButton}/></li>
-          <li><SidebarButton name="Trade" icon={stats} onClick={this._onClickButton}/></li>
-          <li><SidebarButton name="Tech" icon={settings} onClick={this._onClickButton}/></li>
-        </ul>
+      <nav className="sidebar">
+        <SidebarButton name="Faction" icon={game} onClick={this._onClickButton}/>
+        <SidebarButton name="Diplomacy" icon={stats} onClick={this._onClickButton}/>
+        <SidebarButton name="Economy" icon={settings} onClick={this._onClickButton}/>
+        <SidebarButton name="Production" icon={game} onClick={this._onClickButton}/>
+        <SidebarButton name="Trade" icon={stats} onClick={this._onClickButton}/>
+        <SidebarButton name="Tech" icon={settings} onClick={this._onClickButton}/>
       </nav>
-  )
+    )
   }
 }
 

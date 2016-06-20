@@ -1,10 +1,12 @@
 import React, { PropTypes } from 'react'
 
+import Paper from 'material-ui/Paper'
+
 const SidebarMenuPanel = ({ name, isMenuOpen, onClick }) =>
-  <div className={`sidebar-menu ${isMenuOpen ? 'active' : ''}`}>
+  <Paper zDepth={3} rounded={false} className={`sidebar-menu ${isMenuOpen ? 'active' : ''}`}>
     <p>{name}</p>
     <span onClick={onClick}>Close</span>
-  </div>
+  </Paper>
 
 SidebarMenuPanel.propTypes = {
   name: PropTypes.string.isRequired,
