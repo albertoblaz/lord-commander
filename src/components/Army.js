@@ -2,11 +2,16 @@ import React, { PropTypes } from 'react'
 
 const Army = (props) =>
   <span
-    onClick={props.onClick.bind(this, props.id)}
+    onClick={(event) => _onClick(event, props)}
     style={{ backgroundColor: 'yellow', color: 'black' }}
   >
     {props.owner === 'albertoblaz' ? 'AB' : 'WZ'}
   </span>
+
+const _onClick = (event, props) => {
+  event.stopPropagation()
+  props.onClick(props.id)
+}
 
 Army.propTypes = {
   id: PropTypes.string.isRequired,

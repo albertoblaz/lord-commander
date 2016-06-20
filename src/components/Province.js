@@ -8,20 +8,14 @@ const Province = (props) => {
   return (
     <td
       style={style}
+      onClick={props.onClick.bind(this, id)}
     >
-      <div
-        onClick={props.onClick.bind(this, id)}
-      >
-        <strong>{name}</strong>
-        <br></br>
-        <span>{terrain}</span>
-      </div>
-
-      <div>
-        <br></br>
-        <br></br>
-        {army}
-      </div>
+      <strong>{name}</strong>
+      <br></br>
+      <span>{terrain}</span>
+      <br></br>
+      <br></br>
+      {army}
     </td>
   )
 }
