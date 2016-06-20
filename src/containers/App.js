@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 
 import Sidebar from './Sidebar'
 import SidebarMenu from './SidebarMenu'
+import ResourcesBar from '../components/ResourcesBar'
+import Game from './Game'
 // import Chat from './Chat'
 
 import actions from '../actions/SessionActionCreators'
@@ -29,7 +31,10 @@ class App extends Component {
       <div>
         <Sidebar />
         <SidebarMenu />
-        {this.props.children}
+        <div className={'content'}>
+          <ResourcesBar />
+          <Game />
+        </div>
         {/* <Chat /> */}
       </div>
     )
@@ -46,7 +51,7 @@ App.propTypes = {
   componentState: PropTypes.string.isRequired,
 }
 
-const mapStateToProps = (props, router) =>
-  Object.assign({}, props.session, router)
+const mapStateToProps = (state, router) =>
+  Object.assign({}, state.session, router)
 
 export default connect(mapStateToProps)(App)
