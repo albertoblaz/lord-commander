@@ -31,7 +31,7 @@ const Province = (props) => {
 Province.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  owner: PropTypes.string.isRequired,
+  owner: PropTypes.string,
   terrain: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
   army: PropTypes.object,

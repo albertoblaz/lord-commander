@@ -28,4 +28,34 @@ export default {
   '42': 'Koln',
   '43': 'Flanders',
   '44': 'Verdun',
+
+  '50': 'Antwerpen',
+  '51': 'Paris',
+  '52': 'London',
+  '53': 'Venice',
+  '54': 'Burgundy',
+
+  '60': 'Madrid',
+  '61': 'Bucharest',
+  '62': 'Budapest',
+  '63': 'Jakarta',
+  '64': 'Yemen',
+
+  '70': 'California',
+  '71': 'Madagascar',
+  '72': 'Oslo',
+  '73': 'Saint P.',
+  '74': 'Moscow',
+
+  '80': 'Brussels',
+  '81': 'Tirana',
+  '82': 'Kosovo',
+  '83': 'Albacete',
+  '84': 'Nottingham',
+
+  '90': 'East Anglia',
+  '91': 'Dublin',
+  '92': 'Koln',
+  '93': 'Flanders',
+  '94': 'Verdun',
 }
