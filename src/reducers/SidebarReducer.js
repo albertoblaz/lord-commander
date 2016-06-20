@@ -1,4 +1,4 @@
-import gameActions from '../actions/GameActionCreators'
+import mapActions from '../actions/GameActionCreators'
 import actions from '../actions/SidebarActionCreators'
 
 const initialState = {
@@ -15,7 +15,7 @@ const initialState = {
 }
 
 const handlers = {
-  [gameActions.START_GAME]: (state) =>
+  [mapActions.START_GAME]: (state) =>
     Object.assign({}, state, initialState),
 
   [actions.SHOW_MENU]: (state, action) =>

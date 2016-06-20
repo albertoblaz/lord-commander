@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import Sidebar from './Sidebar'
 import SidebarMenu from './SidebarMenu'
 import ResourcesBar from '../components/ResourcesBar'
-import Game from './Game'
+import Map from './Map'
 // import Chat from './Chat'
 
 import actions from '../actions/SessionActionCreators'
@@ -33,7 +33,7 @@ class App extends Component {
         <SidebarMenu />
         <div className={'content'}>
           <ResourcesBar />
-          <Game />
+          <Map />
         </div>
         {/* <Chat /> */}
       </div>

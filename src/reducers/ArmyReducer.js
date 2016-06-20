@@ -1,5 +1,5 @@
 // import actions from '../actions/ArmyActionCreators'
-import gameActions from '../actions/GameActionCreators'
+import mapActions from '../actions/GameActionCreators'
 
 const initialState = {
   armies: {
@@ -25,7 +25,7 @@ const initialState = {
 }
 
 const handlers = {
-  [gameActions.START_GAME]: (state) =>
+  [mapActions.START_GAME]: (state) =>
     Object.assign({}, state, initialState),
 }
 

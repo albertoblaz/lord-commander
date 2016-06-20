@@ -3,11 +3,11 @@ import { connect } from 'react-redux'
 
 import MapTable from '../components/MapTable'
 
-import gameActions from '../actions/GameActionCreators'
+import mapActions from '../actions/GameActionCreators'
 import provinceActions from '../actions/ProvinceActionCreators'
 import sidebarActions from '../actions/SidebarActionCreators'
 
-class Game extends Component {
+class Map extends Component {
   constructor (props) {
     super(props)
     this._onClickProvince = this._onClickProvince.bind(this)
@@ -17,7 +17,7 @@ class Game extends Component {
   componentWillMount () {
     const { dispatch } = this.props
     dispatch(provinceActions.getProvinces(), () => {
-      dispatch(gameActions.startGame())
+      dispatch(mapActions.startGame())
     })
   }
 
@@ -44,7 +44,7 @@ class Game extends Component {
   }
 }
 
-Game.propTypes = {
+Map.propTypes = {
   dispatch: PropTypes.func.isRequired,
   componentState: PropTypes.string.isRequired,
   provinces: PropTypes.object.isRequired,
@@ -54,5 +54,5 @@ Game.propTypes = {
 const mapStateToProps = ({ provinces, army }) =>
   Object.assign({}, provinces, { armies: army.armies })
 
-export default connect(mapStateToProps)(Game)
+export default connect(mapStateToProps)(Map)
 
