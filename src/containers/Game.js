@@ -14,15 +14,19 @@ class Game extends Component {
     super(props)
     this._onClickProvince = this._onClickProvince.bind(this)
     this._onClickArmy = this._onClickArmy.bind(this)
+  }
 
-    this.props.dispatch(gameActions.startGame())
-    this.props.dispatch(provinceActions.getProvinces())
+  componentWillMount () {
+    const { dispatch } = this.props
+    dispatch(provinceActions.getProvinces(), () => {
+      dispatch(gameActions.startGame())
+    })
   }
 
   render () {
     return (
       <div className={'content'}>
-        <ResourcesBar username="albertoblaz" {...this.props.resources}/>
+        <ResourcesBar session={this.props.session} {...this.props.resources}/>
 
         <MapTable
           componentState={this.props.componentState}
@@ -49,6 +53,8 @@ class Game extends Component {
 Game.propTypes = {
   dispatch: PropTypes.func.isRequired,
 
+  session: PropTypes.object,
+
   resources: PropTypes.object.isRequired,
 
   componentState: PropTypes.string.isRequired,
@@ -60,21 +66,28 @@ Game.propTypes = {
 const sumResources = (playerResources, resources) => {
   const keys = Object.keys(playerResources)
   const values = _.map(keys, (k) =>
-    _.isNumber(resources[k]) ? parseInt(resources[k] + playerResources[k]) : parseInt(playerResources[k]))
+    _.isNumber(resources[k])
+      ? parseInt(resources[k] + playerResources[k])
+      : parseInt(playerResources[k])
+  )
   return _.zipObject(keys, values)
 }
 
-const calculateResources = (playerResources, provinces) =>
+const calculateResources = (playerResources, provinces, username) =>
   _(provinces)
-    .filter((province) => province.owner === 'albertoblaz')
+    .filter((province) => province.owner === username)
     .map((province) => province.resources)
     .reduce(sumResources, playerResources)
 
-const mapStateToProps = (state) =>
+const mapStateToProps = ({ provinces, session, army, game }) =>
   Object.assign({},
-    state.provinces,
-    { armies: state.army.armies },
-    { resources: calculateResources(state.game.resources, state.provinces.provinces) }
+    provinces,
+    { session: session.session },
+    { armies: army.armies },
+    { resources: session.session
+        ? calculateResources(game.resources, provinces.provinces, session.session.username)
+        : {},
+    }
   )
 
 export default connect(mapStateToProps)(Game)

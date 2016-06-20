@@ -27,7 +27,7 @@ const ResourcesBar = (props) =>
       <Resource tooltip="Technology" icon={tech} value={props.technology}/>
     </ToolbarGroup>
 
-    <NavigationList username={props.username}/>
+    <NavigationList session={props.session} />
   </Toolbar>
 
 ResourcesBar.propTypes = {
@@ -37,7 +37,10 @@ ResourcesBar.propTypes = {
   meganium: PropTypes.number.isRequired,
   vylerium: PropTypes.number.isRequired,
   technology: PropTypes.number.isRequired,
-  username: PropTypes.string.isRequired,
+  session: PropTypes.shape({
+    username: PropTypes.string.isRequired,
+    avatarUrl: PropTypes.string.isRequired,
+  }),
 }
 
 export default ResourcesBar

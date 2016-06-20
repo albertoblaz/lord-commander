@@ -9,13 +9,11 @@ import FlatButton from 'material-ui/FlatButton'
 import MenuItem from 'material-ui/MenuItem'
 import Divider from 'material-ui/Divider'
 
-const USER_AVATAR = 'https://avatars.slack-edge.com/2016-04-18/35512615170_341dd821da9224afd14f_512.jpg'
-
-const NavigationList = (props) =>
+const NavigationList = ({ session }) =>
   <ToolbarGroup className="navigation">
     <FlatButton className="user-button">
       <IconMenu
-        iconButtonElement={renderButton(props.username, USER_AVATAR)}
+        iconButtonElement={renderButton(session.username, session.avatarUrl)}
         anchorOrigin={{ 'horizontal': 'left', 'vertical': 'bottom' }}
         targetOrigin={{ 'horizontal': 'middle', 'vertical': 'top' }}
       >
@@ -42,7 +40,10 @@ const renderLink = (link) =>
   </Link>
 
 NavigationList.propTypes = {
-  username: PropTypes.string.isRequired,
+  session: PropTypes.shape({
+    username: PropTypes.string.isRequired,
+    avatarUrl: PropTypes.string.isRequired,
+  }),
 }
 
 export default NavigationList

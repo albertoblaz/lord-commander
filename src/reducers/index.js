@@ -4,6 +4,7 @@ import army from './ArmyReducer'
 import chat from './ChatReducer'
 import game from './GameReducer'
 import provinces from './ProvinceReducer'
+import session from './SessionReducer'
 import sidebar from './SidebarReducer'
 
 const reducer = (handlers, state, action) =>
@@ -15,6 +16,7 @@ export default function createRootReducer (additionalReducers = {}) {
     chat: chat(reducer),
     game: game(reducer),
     provinces: provinces(reducer),
+    session: session(reducer),
     sidebar: sidebar(reducer),
   }
 
