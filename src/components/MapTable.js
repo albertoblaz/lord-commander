@@ -11,6 +11,7 @@ const MapTable = React.createClass({
       'loading', 'idle', 'failed',
     ]).isRequired,
     provinces: PropTypes.object.isRequired,
+    armies: PropTypes.object.isRequired,
     onClickProvince: PropTypes.func.isRequired,
     onClickArmy: PropTypes.func.isRequired,
   },
