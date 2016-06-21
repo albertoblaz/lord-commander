@@ -1,4 +1,4 @@
-import mapActions from '../actions/GameActionCreators'
+import mapActions from '../actions/MapActionCreators'
 import actions from '../actions/SidebarActionCreators'
 
 const initialState = {

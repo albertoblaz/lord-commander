@@ -65,11 +65,11 @@ const calculateResources = (playerResources, provinces, username) =>
     .map((province) => province.resources)
     .reduce(sumResources, playerResources)
 
-const mapStateToProps = ({ session, game, provinces }) =>
+const mapStateToProps = ({ session, map, provinces }) =>
   Object.assign({},
     session,
     { resources: session.session
-        ? calculateResources(game.resources, provinces.provinces, session.session.username)
+        ? calculateResources(map.resources, provinces.provinces, session.session.username)
         : {},
     }
   )

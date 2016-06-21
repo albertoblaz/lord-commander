@@ -1,5 +1,5 @@
 // import actions from '../actions/ArmyActionCreators'
-import mapActions from '../actions/GameActionCreators'
+import mapActions from '../actions/MapActionCreators'
 
 const initialState = {
   armies: {

@@ -1,12 +1,5 @@
 import React, { PropTypes, Component } from 'react'
 import { connect } from 'react-redux'
-// import _ from 'lodash'
-
-import Sidebar from './Sidebar'
-import SidebarMenu from './SidebarMenu'
-import ResourcesBar from '../components/ResourcesBar'
-import Map from './Map'
-// import Chat from './Chat'
 
 import actions from '../actions/SessionActionCreators'
 
@@ -27,17 +20,7 @@ class App extends Component {
   }
 
   _renderIdle () {
-    return (
-      <div>
-        <Sidebar />
-        <SidebarMenu />
-        <div className={'content'}>
-          <ResourcesBar />
-          <Map />
-        </div>
-        {/* <Chat /> */}
-      </div>
-    )
+    return this.props.children
   }
 
   _renderFailed () {

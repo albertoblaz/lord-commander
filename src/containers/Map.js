@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import MapTable from '../components/MapTable'
 
-import mapActions from '../actions/GameActionCreators'
+import mapActions from '../actions/MapActionCreators'
 import provinceActions from '../actions/ProvinceActionCreators'
 import sidebarActions from '../actions/SidebarActionCreators'
 
