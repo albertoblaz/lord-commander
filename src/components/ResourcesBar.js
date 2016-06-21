@@ -12,6 +12,7 @@ import vylerium from '../../assets/icons/diamond-2.svg'
 import tech from '../../assets/icons/science.svg'
 
 import Resource from './Resource'
+import Time from './Time'
 import NavigationList from './NavigationList'
 
 // 'svg-inline!icon.svg'
@@ -29,6 +30,8 @@ const ResourcesBar = ({ session, resources }) =>
         <div className="divider"></div>
         <Resource tooltip="Technology" icon={tech} value={resources.technology}/>
       </ToolbarGroup>
+
+      <Time />
 
       <NavigationList session={session} />
     </Toolbar>
