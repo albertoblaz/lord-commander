@@ -8,6 +8,22 @@ body {
 	margin: 0;
 }
 
+.loading {
+	position: absolute !important;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  &__text {
+    margin-top: 2em;
+		color: #062F80;
+    font-size: 16px;
+    letter-spacing: 5px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+}
+
 .sidebar {
 	position: fixed;
 	top: 0;

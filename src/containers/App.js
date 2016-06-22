@@ -1,6 +1,7 @@
 import React, { PropTypes, Component } from 'react'
 import { connect } from 'react-redux'
 
+import Loading from '../components/Loading'
 import actions from '../actions/SessionActionCreators'
 
 class App extends Component {
@@ -16,7 +17,7 @@ class App extends Component {
   }
 
   _renderLoading () {
-    return <span>Loading...</span>
+    return <Loading />
   }
 
   _renderIdle () {
@@ -24,7 +25,7 @@ class App extends Component {
   }
 
   _renderFailed () {
-    return <span>Failed...</span>
+    return <span>{this.props.error}</span>
   }
 }
 
@@ -32,6 +33,8 @@ App.propTypes = {
   dispatch: PropTypes.func.isRequired,
   children: PropTypes.object.isRequired,
   componentState: PropTypes.string.isRequired,
+  session: PropTypes.object,
+  error: PropTypes.object,
 }
 
 const mapStateToProps = (state, router) =>
