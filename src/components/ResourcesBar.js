@@ -17,7 +17,7 @@ import NavigationList from './NavigationList'
 
 // 'svg-inline!icon.svg'
 
-const ResourcesBar = ({ session, resources }) =>
+const ResourcesBar = ({ dispatch, session, resources }) =>
   !session || (
     <Toolbar className="resources">
       <ToolbarGroup>
@@ -31,13 +31,14 @@ const ResourcesBar = ({ session, resources }) =>
         <Resource tooltip="Technology" icon={tech} value={resources.technology}/>
       </ToolbarGroup>
 
-      <Time />
+      <Time dispatch={dispatch} />
 
       <NavigationList session={session} />
     </Toolbar>
   )
 
 ResourcesBar.propTypes = {
+  dispatch: PropTypes.func.isRequired,
   resources: PropTypes.shape({
     money: PropTypes.number.isRequired,
     manpower: PropTypes.number.isRequired,
