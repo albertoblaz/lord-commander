@@ -4,7 +4,7 @@ import _ from 'lodash'
 import Message from './Message'
 
 const Messages = (props) =>
-  <aside>
+  <aside className="chat">
     <div>
       <h2>Chat</h2>
       <button onCLick={props.createNewChat}>+</button>

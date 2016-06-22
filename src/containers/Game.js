@@ -4,17 +4,19 @@ import Sidebar from './Sidebar'
 import SidebarMenu from './SidebarMenu'
 import ResourcesBar from '../components/ResourcesBar'
 import Map from './Map'
-// import Chat from './Chat'
+import Chat from './Chat'
 
 const Game = () =>
   <div>
     <Sidebar />
     <SidebarMenu />
-    <div className={'content'}>
+    <div className="content">
       <ResourcesBar />
-      <Map />
+      <div>
+        <Map />
+        <Chat />
+      </div>
     </div>
-    {/* <Chat /> */}
   </div>
 
 export default Game
