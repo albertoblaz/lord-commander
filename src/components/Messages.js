@@ -1,25 +1,34 @@
 import React, { PropTypes } from 'react'
 
-import Drawer from 'material-ui/Drawer'
+import AppBar from 'material-ui/AppBar'
 import { List } from 'material-ui/List'
 import Subheader from 'material-ui/Subheader'
 import FloatingActionButton from 'material-ui/FloatingActionButton'
 import ContentAdd from 'material-ui/svg-icons/content/add'
+import IconButton from 'material-ui/IconButton'
+import NavigationClose from 'material-ui/svg-icons/navigation/close'
 
 import Message from './Message'
 
 const Messages = (props) =>
-  <Drawer open={true} openSecondary={true}>
-    <div>
-      <h2>Chat</h2>
-      <FloatingActionButton
-        mini={true}
-        secondary={true}
-        onCLick={props.createNewChat}
-      >
-        <ContentAdd />
-      </FloatingActionButton>
-    </div>
+  <div>
+    <AppBar
+      title="Messages"
+      iconElementLeft={
+        <IconButton onTouchTap={props.onClose}>
+          <NavigationClose />
+        </IconButton>
+      }
+    />
+
+    <FloatingActionButton
+      className="btn-new-chat"
+      mini={true}
+      secondary={true}
+      onClick={props.onNewChat}
+    >
+      <ContentAdd />
+    </FloatingActionButton>
 
     <List>
       <Subheader>Recent chats</Subheader>
@@ -27,11 +36,13 @@ const Messages = (props) =>
         <Message value={index} key={message.id} {...message} />
       )}
     </List>
-  </Drawer>
+  </div>
 
 Messages.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
   messages: PropTypes.array.isRequired,
-  createNewChat: PropTypes.func.isRequired,
+  onNewChat: PropTypes.func.isRequired,
+  onClose: PropTypes.func.isRequired,
 }
 
 export default Messages

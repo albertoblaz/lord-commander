@@ -97,18 +97,14 @@ body {
 }
 
 .chat {
-	position: fixed;
-	right: 0;
-	top: 56px;
-	bottom: 0;
-	width: 120px;
-  background: white;
-  z-index: 200;
+	top: 55px !important;
+}
 
-	img {
-		height: 32px;
-		width: 32px;
-	}
+.btn-new-chat{
+  position: absolute;
+	right: 10%;
+  transform: translateY(-50%);
+  z-index: 3000;
 }
 
 .navigation {

@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import _ from 'lodash'
 
 import { Toolbar, ToolbarGroup } from 'material-ui/Toolbar'
+import IconButton from 'material-ui/IconButton'
+import CommunicationChatBubble from 'material-ui/svg-icons/communication/chat-bubble'
 
 import coins from '../../assets/icons/coins.svg'
 import manpower from '../../assets/icons/soldier.svg'
@@ -14,6 +16,7 @@ import tech from '../../assets/icons/science.svg'
 import Resource from './Resource'
 import Time from './Time'
 import NavigationList from './NavigationList'
+import chatActions from '../actions/ChatActionCreators'
 
 // 'svg-inline!icon.svg'
 
@@ -33,9 +36,17 @@ const ResourcesBar = ({ dispatch, session, resources }) =>
 
       <Time dispatch={dispatch} />
 
-      <NavigationList session={session} />
+      <ToolbarGroup>
+        <IconButton onClick={() => onClickChatButton(dispatch)}>
+          <CommunicationChatBubble />
+        </IconButton>
+
+        <NavigationList session={session} />
+      </ToolbarGroup>
     </Toolbar>
   )
+
+const onClickChatButton = (dispatch) => dispatch(chatActions.toggleChatBar())
 
 ResourcesBar.propTypes = {
   dispatch: PropTypes.func.isRequired,
