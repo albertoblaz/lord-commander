@@ -4,7 +4,7 @@ import moment from 'moment'
 import eventActions from '../actions/eventActionCreators'
 
 const TIME_INIT = moment('2190-07-02').utc()
-const DELAY = 250
+const DELAY = 1000
 
 class Time extends Component {
   componentWillMount () {
