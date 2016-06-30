@@ -25,7 +25,7 @@ class Time extends Component {
 
   _interval () {
     this._advanceTime()
-    if (Math.random() < 0.01) this._triggerEvent()
+    if (Math.random() < 0.005) this._triggerEvent()
   }
 
   _advanceTime () {
